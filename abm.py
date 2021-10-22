@@ -61,19 +61,12 @@ class Abm:
 			
 		# pero si no lo encontró, retorna False:
 		return False
-
+        #Utiliza el metodo coincide para buscar el filtro en precio o marca
 	def buscar(self, filtro):
-		'''Retorna una lista de todos los arts que coincidan con el filtro 
-		dado, en el nombre o en la marca'''
-
-		'''arts = []
-		for art in self.arts:
-			if art.coincide(filtro):
-				arts.append(art)
-				return arts'''
 		arts = Art.coincide(self, filtro)
 		return arts
-	
+        
+        #Busca solo en el nombre de articulo
 	def buscar_n(self, filtro):
 		
 		arts = []
@@ -81,7 +74,7 @@ class Abm:
 			if filtro in art.nombre:
 				arts.append(art)
 		return arts
-	
+        #Busca solo en la marta de articulo
 	def buscar_m(self, filtro):
 		
 		arts = []
@@ -90,7 +83,7 @@ class Abm:
 				arts.append(art)
 		return arts
 		
-
+        #Elimina un articulo si existe
 	def eliminar_articulo(self, id_art):
 		art = self.buscar_por_id(id_art)
 		if art:
@@ -101,14 +94,9 @@ class Abm:
 		else:
 			print("No se encontro el art")
 			return False
-			
+		#Crea un nuevo objeto Cajon	
 	def nuevo_cajon(self, nombre, precio, id_art, marca, cbotellas):
 		art = Cajon(nombre, precio, id_art, marca, cbotellas)
 		self.arts.append(art)
 		self.repo.store(art)
-		
-		
-	'''def nueva_tarea(self, texto, etiquetas, responsable, fecha_vencimiento):
-		nota = Tarea(texto, etiquetas, responsable, fecha_vencimiento)		
-		self.notas.append(nota)'''
 
