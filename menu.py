@@ -64,26 +64,7 @@ Menú del abm:
 			print('-' * 40)
 	
 	def buscar_articulos(self):
-		'''Solicita al usuario un cadena de búsqueda y muestra los arts que 
-		coinciden con el mismo, si es que hay alguna'''
-		'''sub_opcion = input(" Buscar por: \n | 1-Codigo | 2-Nombre | 3-Marca: ") 
-		if sub_opcion == "1":
-			id_art = int(input("Codigo: "))
-			arts = self.abm.buscar_por_id(id_art)
-			if arts:
-				self.mostrar_articulos(arts)
-			else:
-				print("No se encontro Articulo")
-		elif sub_opcion == "2":
-			filtro = input("Nombre: ")
-			if arts:
-				self.mostrar_articulos(arts)
-			else:
-				print("No se encontro Articulo")
-		elif sub_opcion == "3":
-			print("Contruir 404")
-		else: 
-			print("no es una opcion valida")'''
+
 			
 		sub_opcion = (input("Buscar en;  \n| 1-Nombre y/o Marca | 2-Nombre | 3-Marca | 4-Codigo:  "))
 		if sub_opcion == "1":
@@ -127,10 +108,6 @@ Menú del abm:
 		else:
 			print("No es una opcion valida")
 
-		'''if arts:
-			self.mostrar_articulos(arts)
-		else:
-			print("Ninguna articulo coincide con la búsqueda")'''
 
 	def agregar_articulo(self):
 		'''Solicita un nombre al usuario y agrega un nuevo art con ese nombre'''
@@ -214,6 +191,8 @@ Menú del abm:
 		costo_cajon = 0
 		mayores = []
 		menores = []
+
+		''' Recorre la lista de articulos y determina el mayor, el menor y  la suma de los articulos'''
 		
 		for art in arts:
 			
@@ -235,16 +214,15 @@ Menú del abm:
 			
 			if menor.precio > art.precio and not hasattr(art, "cbotellas"):
 				menor = art
-
-				
-
+			
+			''' Busco si son cajones, y determino la cantidad, botellas y suma de costos'''
 			
 			if hasattr(art, "cbotellas"):
 				ccajones += 1
 				cbotellas += art.cbotellas
 				costo_cajon += art.precio
 
-		''' Busco si Mayor y Menor estan repetidos y lo agrego a la lista respectiva'''	
+			''' Busco si Mayor y Menor estan repetidos y lo agrego a la lista respectiva'''	
 		for art in arts:
 			if mayor.precio == art.precio and not hasattr(art, "cbotellas"):
 				mayores.append(art)
